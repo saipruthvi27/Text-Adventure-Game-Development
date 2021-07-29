@@ -1,0 +1,423 @@
+"""
+    Docstring:
+    
+    Introduction:
+    The game you are about to encounter is based on Liam Neeson 's film 
+    Taken (2008), an Action / Thriller genre. In order to win the game, 
+    there are several levels to conquer. Each level measures your skills 
+    in statistics and imagination. There are specified functions for 
+    starting, winning, and losing.
+    
+    You are playing the role of Bryan Mills, a former government operative,
+    a retired CIA agent to be precise. Bryan used to be a workaholic and 
+    barely made efforts in connecting with his family. So, Bryan puts aside 
+    his job to get closer with his estranged daughter Kim. His worst fear 
+    comes to life when he realizes that sex slavers have abducted Kim and 
+    her friend shortly after they arrive in Paris.
+    
+    
+    Level 1: Challenging the kidnapper
+    Level 2: Mission with a covert identity
+    Level 3: Rescue your daughter
+    
+    
+    Known Errors:
+    None
+"""
+
+from sys import exit
+import random
+
+
+def start():
+    
+    #creating global variables to use them all throughout the program
+    global player_name
+    global language
+    global food
+    
+    #adding colour to the text
+    print("\033[1;32;48m   \n")
+    
+    #game introduction and selecting character
+    print(f"*" * 75)
+    print("\U0001f600" * 50)
+    print(f"""\n Hello and welcome to a mind-bending game based on the theme 
+    of TAKEN(2008) movie \n""")
+    print(f"""\n Your favourite talk show host Sai Pruthvi is here to 
+    entertain you throughout the game \n""")
+    print(f"*" * 75)
+    print(f"\n")
+    
+    print(f" What is the name of the player? \n")
+    player_name = input(prompt = "Input participant name: ")
+    print(f""" \n We welcome our participant {player_name}\n""")
+    print(f""" Nice meeting you! I am interested in knowing {player_name}. 
+    Tell me more about yourself \n""")
+    
+    #getting to know more about the player
+    language = input(prompt = "What language do you speak at home? ")
+    print (f"\n Wow! {language} is a beautiful language to converse in. \n")
+    food = input(prompt = "What is your favourite food? ")
+    print(f"""\n That is a lovely dish! I would definetly like to try {food} 
+    someday. \n""")
+    input(prompt = "\n Press <ENTER> to continue \n ") 
+    
+    print(f"*" * 75)
+    print(f""" GAME ON! From here on {player_name} will be playing Bryan Mills 
+    character in the game""")
+    input(prompt = "\n Press <ENTER> to continue \n ")    
+    
+    challenge()
+
+    
+def challenge():
+    
+    #creating interactive environment during the game session
+    print(f"ALBANIAN GANGSTER: I challenge you to break my skill and confidence")
+    input(prompt = "\n Press <ENTER> to continue \n ")
+    
+    print(f"BRYAN MILLS: Challenge Accepted")
+    input(prompt = "\n Press <ENTER> to continue \n ")
+    
+    print(f""" ALBANIAN GANGSTER: There's a car behind one of the three doors. 
+    Behind the other two doors are goats. Your daughter is in the car behind 
+    one of the door.""")
+    input(prompt = "\n Press <ENTER> to continue \n ") 
+    
+    print(f"\n")
+    
+    #initial level of the game and creating curiosity
+    print(f"-" * 75)
+    print(f"Level 1: Challenging the kidnapper")
+    print( f"""ALBANIAN GANGSTER: Is it to your advantage to switch your choice?
+    1) Yes, switch
+    2) No, don't switch
+    3) I guess, I have no idea what's happening!""")
+    print(f"-" * 75)
+    
+    choice = input (" \n")
+    #using if commands to iterate the conditions
+    if "1" in choice or "yes" in choice or "switch" in choice:
+        print(f"\n That's a good choice\n")
+        challenge_accepted()
+    
+    elif "2" in choice or "no" in choice:
+        print(f"\n Think again! It can be of your advantage.\n")
+        print(f"Anyways, you will get to know about it now. So don't worry!\n")
+        challenge_accepted()
+    
+    elif "3" in choice:
+        print(f"\n Don't worry! I'll describe it in detail\n")
+        challenge_accepted()
+    
+    else:
+        print("Invalid input. TRY AGAIN!")
+        input(prompt = " Press <ENTER> to continue \n")
+        challenge()
+        
+#continuation of level one code, simulation of monty hall problem in a simple model
+def challenge_accepted():
+    print(f"*" * 75)
+    input(prompt = "\n Press <ENTER> to continue \n ") 
+    
+    #using if command for user to select the door
+    print(f"""ALBANIAN GANGSTER: Pick a door
+    1) Door A
+    2) Door B
+    3) Door C""")
+    
+    choice = input (" \n")
+    #using if commands for the user to have a second chance
+    if "1" in choice or "A" in choice or "a" in choice:
+        print(f"""ALBANIAN GANGSTER: You chose Door A! 
+        Here's the thing; I will open one of the doors you didn't choose and 
+        you are allowed to change your answer. Do you want to switch?
+        1) Yes
+        2) No""")
+        
+        choice = input (" \n")
+        #using if commands for the user to have a second chance
+        if "1" in choice or "Yes" in choice or "yes" in choice:
+            print(f"""ALBANIAN GANGSTER: Smart choice!
+            Now I shall reveal you a door that you didn't pick. Open sesame""")
+            input(prompt = " Press <ENTER> to open the door \n")
+            
+            print(f" Door C has opened and there is a goat behind this door.\n")
+            print(f" ALBANIAN GANGSTER: Now for the big reveal!\n")
+            input(prompt = " Press <ENTER> to open the door \n")
+            
+            print(f""" ALBANIAN GANGSTER: There is a goat also in the another 
+            door. Better luck next time. GAME OVER!""")
+            fail()
+        
+        elif "2" in choice or "No" in choice or "no" in choice:
+            print(f"ALBANIAN GANGSTER: Looks like you are sticking to your choice \n")
+            input(prompt = " Press <ENTER> to open the door \n")
+            
+            print(f" Congratulations!!! You have chosen the door that has a car.\n")
+            mission()
+            
+        else:
+            #command to exit the loop
+            print("Invalid input. TRY AGAIN!")
+            input(prompt = " Press <ENTER> to continue \n")
+            challenge_accepted()
+    
+    elif "2" in choice or "B" in choice or "b" in choice:
+        print(f"""ALBANIAN GANGSTER: You chose Door B! 
+        Like I asked you before, I'll ask again. After I open one of the doors
+        you didn't pick, Will it be beneficial for you to switch?
+        1) Yes, switch
+        2) No""")
+        
+        choice = input (" \n")
+        #using if commands for the user to have a second chance
+        if "1" in choice or "Yes" in choice or "yes" in choice or "switch" in choice:
+            print(f"""ALBANIAN GANGSTER: Good thinking! I will open the door 
+            that you didn't pick.\n""")
+            input(prompt = " Press <ENTER> to open the door \n")
+            print(f" Door C has opened and there is a goat behind this door. \n")
+            print(f" ALBANIAN GANGSTER: Now for the big reveal!\n")
+            input(prompt = " Press <ENTER> to open the door \n")
+            print(f" Congratulations!!! You have found the door that has a car.\n")
+            mission()
+        
+        elif "2" in choice or "No" in choice or "no" in choice:
+            print(f"ALBANIAN GANGSTER: Sounds like you dont trust my choices \n")
+            input(prompt = " Press <ENTER> to open the door \n")
+            print(f""" ALBANIAN GANGSTER: There is a goat behind this door.
+            Better luck next time. GAME OVER!""")
+            fail()
+            
+        else:
+            #command to exit the loop
+            print("Invalid input. TRY AGAIN!")
+            input(prompt = " Press <ENTER> to continue \n")
+            challenge_accepted()
+    
+    elif "3" in choice or "C" in choice or "c" in choice:
+        print(f"""ALBANIAN GANGSTER: You chose Door C! 
+        I will make this a bit more interesting. I shall open one of the doors
+        you didn't pick. Would it be to your advantage to switch?
+        1) Yes
+        2) No""")
+        
+        choice = input (" \n")
+        #using if commands for the user to have a second chance 
+        if "1" in choice or "Yes" in choice or "yes" in choice:
+            print(f"""ALBANIAN GANGSTER: Nice choice! I will open the door 
+            that you didn't pick.\n""")
+            input(prompt = " Press <ENTER> to open the door \n")
+            print(f" Door B has opened and there is a goat behind this door. \n")
+            print(f" ALBANIAN GANGSTER: Now for the big reveal!\n")
+            input(prompt = " Press <ENTER> to open the door \n")
+            print(f" Congratulations!!! You have found the door that has a car.\n")
+            mission()
+        
+        elif "2" in choice or "No" in choice or "no" in choice:
+            print(f"ALBANIAN GANGSTER: Curios to see what's behind the door you picked.\n")
+            input(prompt = " Press <ENTER> to open the door \n")
+            print(f""" ALBANIAN GANGSTER: There is a goat behind this door.
+            Better luck next time. GAME OVER!""")
+            fail()
+            
+        else:
+            #command to exit the loop
+            print("Invalid input. TRY AGAIN!")
+            input(prompt = " Press <ENTER> to continue \n")
+            challenge_accepted()
+    
+        
+    else:
+        #command to exit the program
+        print("Invalid input. GAME OVER!")
+        input(prompt = " Press <ENTER> to continue \n")
+        fail()
+
+        
+def mission():
+    print(f"-" * 75)
+    #simulating a level for player to unscramble words
+    print(f"Level 2: Mission with a covert identity")
+    print(f"ALBANIAN GANGSTER: Congratulations on coming this far!")
+    input(prompt = " Press <ENTER> to continue \n")
+    print(f""" Now we move onto our next obstacle. In order for me to tip you off 
+    where your daughter is being sent, I need you to do a mission for me.\n""")
+    print(f"Unscramble the following words.")
+    word1()
+
+    
+def word1():
+    #creating a list for user_input to be compared with the correct answer
+    word1_list = ['hardest', 'threads', 'thrashed', 'hatreds']
+    
+    #quetion_1
+    print(f"Word 1: thrashed")
+    a1 = input(prompt = "Input the answer \n")
+    if a1 == word1_list[0] or a1 == word1_list[1] or a1 == word1_list[2] or a1 == word1_list[3]:
+        print(f"\n Correct answer \n")
+        word2()
+    else:
+        #command to exit the program
+        print("Incorrect input. GAME OVER!")
+        input(prompt = " Press <ENTER> to continue \n")
+        fail()
+
+        
+def word2():
+    #creating a list for user_input to be compared with the correct answer
+    word2_list = ['desserts', 'stressed']
+    
+    #question_2
+    print(f"Word 2: erstdsse")
+    a2 = input(prompt = "Input the answer \n")
+    if a2 == word2_list[0] or a2 == word2_list[1]:
+        print(f"\n Correct answer \n")
+        word3()
+    else:
+        #command to exit the program
+        print("Incorrect input. GAME OVER!")
+        input(prompt = " Press <ENTER> to continue \n")
+        fail()
+
+        
+def word3():
+    #creating a list for user_input to be compared with the correct answer
+    word3_list = ['freight', 'fighter','refight']
+    
+    #question_3
+    print(f"Word 3: ithrefg")
+    a3 = input(prompt = "Input the answer \n")
+    if a3 == word3_list[0] or a3 == word3_list[1] or a3 == word3_list:
+        print(f"\n Correct answer \n")
+        rescue()
+    else:
+        #command to exit the program
+        print("Incorrect input. GAME OVER!")
+        input(prompt = " Press <ENTER> to continue \n")
+        fail()
+        
+    
+def rescue():
+    print(f"-" * 75)
+    #final level of the game, its a brain teaser round and it excercises the brain
+    print(f"Level 3: Rescue your daughter")
+    print(f" This is the last level to finish the game")
+    
+    #list of questions for the program to ask at the user at random
+    quest_list = ['Which is heavier a ton of gold or a ton of silver?', 
+                  'A certain five letter word that becomes shorter when you add two letters to it.What is the word?', 
+                  'A plane crashes on the border of the U.S. and Canada. Where do they bury the survivours?',
+                  'A farmer has 17 sheep and all but 9 die. How many are left?',
+                  'What is broken everytime it is spoken?']
+    
+    ans_list = ['short','9','silence']
+    
+    questions = 3
+    #command for questions to be displayed at random using while condition
+    while questions > 0:
+        question = random.choice(quest_list)
+        input(prompt = " Press <ENTER> to continue \n")
+        print(question)
+        print(" ")
+        
+        #answers using if coomand for the random questions asked
+        if question == quest_list[0]:
+            print(f"""1) Gold
+            2) Silver
+            3) Both are equal""")
+            choice = input (" \n")
+            if "3" in choice or "equal" in choice:
+                print(f"\n Correct answer \n")
+                questions -= 1
+            else:
+                print("Invalid input. GAME OVER!")
+                input(prompt = " Press <ENTER> to continue \n")
+                fail()
+        
+        elif question == quest_list[1]:
+            x1 = input(prompt = "Input the answer \n")
+            if ans_list[0] == x1:
+                print(f"\n Correct answer \n")
+                questions -= 1
+            else:
+                print("Invalid input. GAME OVER!")
+                input(prompt = " Press <ENTER> to continue \n")
+                fail()
+        
+        elif question == quest_list[2]:
+            print(f"""1) The U.S.
+            2) Canada
+            3) You can't bury the survivours""")
+            choice = input (" \n")
+            if choice == '3':
+                print(f"\n Correct answer \n")
+                questions -= 1
+            else:
+                print("Invalid input. GAME OVER!")
+                input(prompt = " Press <ENTER> to continue \n")
+                fail()
+        
+        elif question == quest_list[3]:
+            x2 = input(prompt = "Input the answer \n")
+            if ans_list[1] == x2:
+                print(f"\n Correct answer \n")
+                questions -= 1
+            else:
+                print("Invalid input. GAME OVER!")
+                input(prompt = " Press <ENTER> to continue \n")
+                fail()
+                
+        elif question == quest_list[4]:
+            x3 = input(prompt = "Input the answer \n")
+            if ans_list[2] == x3:
+                print(f"\n Correct answer \n")
+                questions -= 1
+            else:
+                print("Invalid input. GAME OVER!")
+                input(prompt = " Press <ENTER> to continue \n")
+                fail()
+    
+    print(f"-" * 75)
+    #final statement, appreciation for the user for surviving this far
+    print(f"*" * 75)
+    print("\U0001f600" * 50)
+    print("\U0001F40D" * 50)
+    print(f"""Congratulations! You made it to your daughter Kim. She is hurt 
+    badly because of the gangsters not looking after her health. Thank you
+    for finishing the game. You have untied a family. \n""")
+    input(prompt = " Press <ENTER> to continue \n")
+    print(f" SAI PRUTHVI: Thanks for taking your time to play {player_name}!")
+    print(f" This is your Sai signing off! Have a wonderful day!")
+    input(prompt = " Press <ENTER> to exit \n")
+    exit(0)
+    
+
+def fail():
+    #commands and output statements to be displayed when the player is not successful
+    print("\U0001F40D" * 50)
+    print(f"""Bryan Mills was not successful in saving his Kim. 
+    A father and daughter share a unique and precious bond. Ruthless people 
+    like these gangsters do not recognise and appreciate such values.""")
+    input(prompt = " Press <ENTER> to continue \n")
+    print("\U0001F40D" * 50)
+    
+    #commencing comments as the game is over and the host is signing off 
+    print(f""" SAI PRUTHVI: Oh, I'm sorry {player_name}, looks like you've 
+    failed in helping Bryan get her daughter back.""")
+    print("*" * 75)
+    print(f" SAI PRUTHVI: Would you prefer to try again? (Yes/No)")
+    retry = input(" ")
+    retry = retry.lower()
+    
+    if retry == 'yes':
+        challenge_accepted()
+        
+    else:
+        print(f" SAI PRUTHVI: Thanks for taking your time to play {player_name}!")
+        print(f" This is your Sai signing off! Have a wonderful day!")
+        exit(0)
+
+
+start()
